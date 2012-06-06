@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2dSimpleGame", "cocos2dHelloWorld\cocos2dHelloWorld\cocos2dSimpleGame.csproj", "{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "cocos2dSimpleGameContent", "cocos2dHelloWorld\cocos2dHelloWorldContent\cocos2dSimpleGameContent.contentproj", "{ABF2BD47-29C1-4783-9D9C-24C0BE660305}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Windows Phone = Debug|Windows Phone
+		Release|Windows Phone = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Debug|Windows Phone.Deploy.0 = Debug|Windows Phone
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Release|Windows Phone.Build.0 = Release|Windows Phone
+		{3F3C7467-40A6-4CFC-8E9C-3134A501E45A}.Release|Windows Phone.Deploy.0 = Release|Windows Phone
+		{ABF2BD47-29C1-4783-9D9C-24C0BE660305}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{ABF2BD47-29C1-4783-9D9C-24C0BE660305}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
