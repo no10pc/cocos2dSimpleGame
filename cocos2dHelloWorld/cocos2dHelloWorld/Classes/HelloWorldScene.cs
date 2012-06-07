@@ -29,8 +29,8 @@ namespace cocos2dSimpleGame
 
             // add a "close" icon to exit the progress. it's an autorelease object
             CCMenuItemImage pCloseItem = CCMenuItemImage.itemFromNormalImage(
-                                                "CloseNormal",
-                                                "CloseSelected",
+                                                "exit",
+                                                "exit",
                                                 this,
                                                 new SEL_MenuHandler(menuCloseCallback));
             pCloseItem.position = new CCPoint(CCDirector.sharedDirector().getWinSize().width - 20, 20);

@@ -18,30 +18,27 @@ namespace cocos2dSimpleGame
             this.m_bIsTouchEnabled = true;
             var width = CCDirector.sharedDirector().getWinSize().width;
             var height = CCDirector.sharedDirector().getWinSize().height;
-            CCSprite background = CCSprite.spriteWithFile(@"images/sprites");
+            CCSprite background = CCSprite.spriteWithFile(@"images/background");
             background.position = new CCPoint(width / 2, height / 2);
             this.addChild(background);
 
-            CCLabelTTF title = CCLabelTTF.labelWithString("Simple Game", "Arial", 24);
-            title.Color = new ccColor3B(0, 255, 255);
-            title.position = new CCPoint(width / 2, height - 50);
-            this.addChild(title);
-
-            CCMenuItemImage playItem = CCMenuItemImage.itemFromNormalImage(@"images/playButton", @"images/playButton", this, playCallback);
-
-            CCMenuItemImage aboutItem = CCMenuItemImage.itemFromNormalImage(@"images/aboutButton", @"images/aboutButton", this, aboutCallback);
 
 
-            CCMenu mainMenu = CCMenu.menuWithItems(playItem, aboutItem);
-            mainMenu.alignItemsVerticallyWithPadding(15f);
-            mainMenu.position = new CCPoint(100, height - 150);
+            CCMenuItemImage playItem = CCMenuItemImage.itemFromNormalImage(@"images/home_64", @"images/home_64", this, playCallback);
+
+            CCMenuItemImage aboutItem = CCMenuItemImage.itemFromNormalImage(@"images/gear_64", @"images/gear_64", this, aboutCallback);
+
+            CCMenuItemImage exitItem = CCMenuItemImage.itemFromNormalImage(@"images/delete_64", @"images/delete_64", this, exitCallback);
+
+            CCMenu mainMenu = CCMenu.menuWithItems(playItem, aboutItem,exitItem);
+            mainMenu.alignItemsHorizontallyWithPadding(100f);
+            mainMenu.position = new CCPoint(400, 100);
             this.addChild(mainMenu);
 
 
-            CCMenuItemImage exitItem = CCMenuItemImage.itemFromNormalImage(@"CloseNormal", @"CloseSelected", this, exitCallback);
-            CCMenu exitMenu = CCMenu.menuWithItems(exitItem);
-            exitMenu.position = new CCPoint(width - exitItem.contentSize.width / 2, exitItem.contentSize.height / 2);
-            this.addChild(exitMenu);
+          
+        
+          
 
 
 
