@@ -30,7 +30,7 @@ namespace cocos2dSimpleGame.Classes
         public CCLabelTTF title;
 
         public CCSprite player;
-       
+        CCSprite target;
 
         public override bool init()
         {
@@ -91,7 +91,14 @@ namespace cocos2dSimpleGame.Classes
             var screenWidth = CCDirector.sharedDirector().getWinSize().width;
             var screenHeight = CCDirector.sharedDirector().getWinSize().height;
             string number = random.Next(1, 15).ToString("00");
-            CCSprite target = CCSprite.spriteWithFile(@"cars/sonice_cars_" + number);
+            if (int.Parse(number) / 2 == Convert.ToDouble(number) / 2)
+            {
+                target = CCSprite.spriteWithFile(@"cars/sonice_cars_" + number);
+            }
+            else
+            {
+                target = CCSprite.spriteWithFile(@"cars/lights_" + number);
+            }
 
             var minY = target.contentSize.height / 2;
             var maxY = screenHeight - target.contentSize.height / 2;
@@ -197,7 +204,7 @@ namespace cocos2dSimpleGame.Classes
             //Move projectile to actual endpoint  
             nextProjectile.runAction(CCSequence.actions(CCMoveTo.actionWithDuration(realMoveDuration, realDest),
                 CCCallFuncN.actionWithTarget(this, spriteMoveFinished)));
-            nextProjectile.tag = 2;  
+            nextProjectile.tag = 2;
         }
         void finishShoot()
         {
