@@ -21,9 +21,7 @@ namespace cocos2dSimpleGame
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-
-        CCApplication application;
+       
 
         public Game1()
         {

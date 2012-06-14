@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using cocos2d;
+
 using CocosDenshion;
+using Microsoft.Xna.Framework;
 
 namespace cocos2dSimpleGame.Classes
 {
@@ -25,7 +27,11 @@ namespace cocos2dSimpleGame.Classes
         int projectileDescroyed = 0;
         int quitProjectiles = 0;
         public int count = 0;
-        public CCLabelTTF title;  
+        public CCLabelTTF title;
+
+        public CCSprite player;
+       
+
         public override bool init()
         {
             SimpleAudioEngine.sharedEngine().playBackgroundMusic(@"sounds/background");
@@ -42,7 +48,7 @@ namespace cocos2dSimpleGame.Classes
             var screenHeight = CCDirector.sharedDirector().getWinSize().height;
 
 
-            CCSprite player = CCSprite.spriteWithFile(@"images/Player");
+            player = CCSprite.spriteWithFile(@"images/Player2");
             player.position = new CCPoint(20, screenHeight / 2);
             this.addChild(player);
 
@@ -136,45 +142,69 @@ namespace cocos2dSimpleGame.Classes
             this.removeChild(sprite, true);
 
         }
-
+        CCSprite nextProjectile = null;
         public override void ccTouchesEnded(List<CCTouch> touches, CCEvent event_)
         {
+
+            if (nextProjectile != null)
+                return;
+
             CCTouch touch = touches.FirstOrDefault();
             CCPoint location = touch.locationInView(touch.view());
             location = CCDirector.sharedDirector().convertToGL(location);
 
+            //set up initial location of projectile  
             CCSize winSize = CCDirector.sharedDirector().getWinSize();
-            CCSprite projectile = CCSprite.spriteWithFile(@"images/Projectile");
-            projectile.position = new CCPoint(20, winSize.height / 2);
+            //CCSprite projectile = CCSprite.spriteWithFile(@"images/Projectile");  
+            nextProjectile = CCSprite.spriteWithFile(@"images/Projectile2");
+            nextProjectile.position = new CCPoint(20, winSize.height / 2);
 
-            float offx = location.x - projectile.position.x;
-            float offy = location.y - projectile.position.y;
+            //Determine offset of location to projectile  
 
-            if (offx < 0)
+            float offX = location.x - nextProjectile.position.x;
+            float offY = location.y - nextProjectile.position.y;
+
+            //Bail out if we are shooting or backwards  
+            if (offX <= 0)
             {
                 return;
             }
 
-            projectile.tag = 2;
-            _projectiles.Add(projectile);
-            this.addChild(projectile);
 
-            float realX = winSize.width + projectile.contentSize.width / 2;
-            float ratio = offy / offx;
-            float realY = realX * ratio + projectile.position.y;
+
+            //Determine where we wish to shoot the projectile to  
+            float realX = winSize.width + nextProjectile.contentSize.width / 2;
+            float ratio = offY / offX;
+            float realY = realX * ratio + nextProjectile.position.y;
             CCPoint realDest = new CCPoint(realX, realY);
 
-            float offRealX = realX - projectile.position.x;
-            float offRealY = realY - projectile.position.y;
+            //Determine the length of how far we're shooting  
+            float offRealX = realX - nextProjectile.position.x;
+            float offRealY = realY - nextProjectile.position.y;
             float length = (float)Math.Sqrt(offRealX * offRealX + offRealY * offRealY);
-            float velocity = 480 / 1;
-            float realmoveDuration = length / velocity;
-            //Action  MoveTo
-            SimpleAudioEngine.sharedEngine().playEffect(@"sounds/biubiu");
-            projectile.runAction(CCSequence.actions(CCMoveTo.actionWithDuration(realmoveDuration, realDest), CCCallFuncN.actionWithTarget(this, spriteMoveFinished)));
+            float velocity = 480 / 1;//480pixls/lsec  
+            float realMoveDuration = length / velocity;
 
+
+            //Determine angle to face  
+            float angleRadians = (float)Math.Atan(offRealY / offRealX);
+            float angleDegrees = MathHelper.ToDegrees(angleRadians);
+            float cocosAngle = -1 * angleDegrees;
+
+            float rotateSpeed = (float)(0.5 / Math.PI);//Would take 0.5 seconds to rotate 0.5 radians ,or half a circle  
+            float rotateDuration = Math.Abs(angleRadians * rotateSpeed);
+            player.runAction(CCSequence.actions(CCRotateTo.actionWithDuration(rotateDuration, cocosAngle), CCCallFunc.actionWithTarget(this, finishShoot)));
+            //Move projectile to actual endpoint  
+            nextProjectile.runAction(CCSequence.actions(CCMoveTo.actionWithDuration(realMoveDuration, realDest),
+                CCCallFuncN.actionWithTarget(this, spriteMoveFinished)));
+            nextProjectile.tag = 2;  
         }
-
+        void finishShoot()
+        {
+            this.addChild(nextProjectile);
+            _projectiles.Add(nextProjectile);
+            nextProjectile = null;
+        }
         public void updates(float dt)
         {
             List<CCSprite> projectilesToDelete = new List<CCSprite>();
@@ -208,8 +238,8 @@ namespace cocos2dSimpleGame.Classes
                     title.setString(projectileDescroyed.ToString("0000"));
                     if (projectileDescroyed > 10)
                     {
-                        GameOverScene pScene = new GameOverScene("You Win");
-                        CCDirector.sharedDirector().replaceScene(pScene);
+                        //GameOverScene pScene = new GameOverScene("You Win");
+                        //CCDirector.sharedDirector().replaceScene(pScene);
                     }
                     this.removeChild(target, true);
                 }
@@ -225,8 +255,8 @@ namespace cocos2dSimpleGame.Classes
                 quitProjectiles++;
                 if (quitProjectiles > 10)
                 {
-                    GameOverScene pScene = new GameOverScene("You Lost");
-                    CCDirector.sharedDirector().replaceScene(pScene);
+                    //GameOverScene pScene = new GameOverScene("You Lost");
+                    //CCDirector.sharedDirector().replaceScene(pScene);
                 }
                 this.removeChild(projectile, true);
             }
