@@ -91,8 +91,6 @@
     <Content Include="lib\cocos2d.Content.Pipeline.Importers.dll" />
     <Content Include="lib\cocos2d.Framework.dll" />
     <Content Include="lib\CocosDenshion.dll" />
-    <Content Include="lib\ICSharpCode.SharpZipLib.dll" />
-    <Content Include="lib\zlib.net.dll" />
     <Content Include="messages.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -52,7 +52,24 @@ namespace cocos2dSimpleGame
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+            {
+                CCScene pScene = CCDirector.sharedDirector().runningScene;
+                string currentScene = pScene.GetType().ToString();
+                if (currentScene == "cocos2dSimpleGame.Classes.GamePlayScreen"
+                    || currentScene == "cocos2dSimpleGame.Classes.GameOverScene"
+                    || currentScene == "cocos2dSimpleGame.Classes.AboutScene"
+                    )
+                {
+                    CCScene mainMenu = CCScene.node();
+                    mainMenu.addChild(cocos2dSimpleGame.Classes.MainMenu.node());
+                    CCDirector.sharedDirector().replaceScene(mainMenu);
+
+                }
+                else
+                {
+                    this.Exit();
+                }
+            }
 
             // TODO: Add your update logic here
 
