@@ -69,7 +69,9 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AboutScene.cs" />
     <Compile Include="Classes\AppDelegate.cs" />
+    <Compile Include="Classes\GameOverScene.cs" />
     <Compile Include="Classes\GamePlayScreen.cs" />
     <Compile Include="Classes\HelloWorldScene.cs" />
     <Compile Include="Classes\MainMenu.cs" />
@@ -91,6 +93,9 @@
     <Content Include="lib\CocosDenshion.dll" />
     <Content Include="lib\ICSharpCode.SharpZipLib.dll" />
     <Content Include="lib\zlib.net.dll" />
+    <Content Include="messages.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>

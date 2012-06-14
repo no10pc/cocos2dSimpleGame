@@ -44,9 +44,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
-      <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
-      <Name>cocos2d.Content.Pipeline.Importers</Name>
+    <ProjectReference Include="..\..\FontProcessor\FontProcessor.csproj">
+      <Project>{A0635796-A5BB-4495-8958-7BE4FD460449}</Project>
+      <Name>FontProcessor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +305,13 @@
       <Name>biubiu</Name>
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="fonts\StartFont.spritefont">
+      <Name>StartFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>ContentProcessor1</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

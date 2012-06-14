@@ -13,7 +13,6 @@ Content\images\Projectile.xnb
 Content\images\sprites.xnb
 Content\images\Target.xnb
 Content\images\1335015572_5410.xnb
-Content\fonts\Arial.xnb
 Content\images\background.xnb
 Content\exit.xnb
 Content\exitselected.xnb
@@ -21,6 +20,7 @@ Content\images\delete_64.xnb
 Content\images\stop_64.xnb
 Content\images\gear_64.xnb
 Content\images\home_64.xnb
+Content\cars\sonice_cars_01.xnb
 Content\cars\sonice_cars_02.xnb
 Content\cars\sonice_cars_03.xnb
 Content\cars\sonice_cars_04.xnb
@@ -35,10 +35,11 @@ Content\cars\sonice_cars_12.xnb
 Content\cars\sonice_cars_13.xnb
 Content\cars\sonice_cars_14.xnb
 Content\cars\sonice_cars_15.xnb
-Content\cars\sonice_cars_01.xnb
+Content\fonts\Arial.xnb
+Content\fonts\StartFont.xnb
+Content\sounds\boom.xnb
 Content\sounds\biubiu.xnb
 Content\sounds\background.xnb
-Content\sounds\boom.xnb
 Content\sounds\background.wma
 Content\images\OpenXLive.jpg
 Content\images\Achievements.png
@@ -75,3 +76,4 @@ Content\cars\sonice_cars_14.png
 Content\cars\sonice_cars_15.png
 Content\sounds\boom.wav
 Content\sounds\background.mp3
+messages.txt

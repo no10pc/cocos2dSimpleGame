@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
 
-namespace cocos2dSimpleGame
+namespace cocos2dSimpleGame.Classes
 {
     public class AppDelegate : CCApplication
     {

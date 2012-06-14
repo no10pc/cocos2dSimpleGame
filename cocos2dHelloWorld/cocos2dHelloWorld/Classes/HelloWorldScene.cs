@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using cocos2d;
 
-namespace cocos2dSimpleGame
+namespace cocos2dSimpleGame.Classes
 {
     public class cocos2dSimpleGame : CCLayer
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using cocos2d;
-namespace cocos2dSimpleGame
+namespace cocos2dSimpleGame.Classes
 {
-   public class MainMenu:CCLayer
+    class MainMenu:CCLayer
     {
         public override bool init()
         {
@@ -67,6 +67,9 @@ namespace cocos2dSimpleGame
         }
         void aboutCallback(object sender)
         {
+            AboutScene pScene = new AboutScene();
+            CCDirector.sharedDirector().replaceScene(pScene);
+
         }
         void exitCallback(object sender)
         {

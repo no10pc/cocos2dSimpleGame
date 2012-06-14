@@ -5,7 +5,7 @@ using System.Text;
 using cocos2d;
 using CocosDenshion;
 
-namespace cocos2dSimpleGame
+namespace cocos2dSimpleGame.Classes
 {
     public class GamePlayScreen : CCScene
     {
@@ -22,7 +22,10 @@ namespace cocos2dSimpleGame
     {
         List<CCSprite> _targets;
         List<CCSprite> _projectiles;
+        int projectileDescroyed = 0;
+        int quitProjectiles = 0;
         public int count = 0;
+        public CCLabelTTF title;  
         public override bool init()
         {
             SimpleAudioEngine.sharedEngine().playBackgroundMusic(@"sounds/background");
@@ -44,9 +47,9 @@ namespace cocos2dSimpleGame
             this.addChild(player);
 
 
-            CCLabelTTF title = CCLabelTTF.labelWithString(count.ToString("0000"), "Arial", 24);
+            title = CCLabelTTF.labelWithString(count.ToString("0000"), "Arial", 24);
             title.Color = new ccColor3B(0, 255, 255);
-            title.position = new CCPoint(10, 24);
+            title.position = new CCPoint(50, 24);
             this.addChild(title);
 
 
@@ -201,6 +204,13 @@ namespace cocos2dSimpleGame
                 foreach (CCSprite target in targetToDelete)
                 {
                     _targets.Remove(target);
+                    projectileDescroyed++;
+                    title.setString(projectileDescroyed.ToString("0000"));
+                    if (projectileDescroyed > 10)
+                    {
+                        GameOverScene pScene = new GameOverScene("You Win");
+                        CCDirector.sharedDirector().replaceScene(pScene);
+                    }
                     this.removeChild(target, true);
                 }
                 if (targetToDelete.Count > 0)
@@ -212,6 +222,12 @@ namespace cocos2dSimpleGame
             foreach (CCSprite projectile in projectilesToDelete)
             {
                 _projectiles.Remove(projectile);
+                quitProjectiles++;
+                if (quitProjectiles > 10)
+                {
+                    GameOverScene pScene = new GameOverScene("You Lost");
+                    CCDirector.sharedDirector().replaceScene(pScene);
+                }
                 this.removeChild(projectile, true);
             }
             projectilesToDelete.Clear();

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 using cocos2d;
+using cocos2dSimpleGame.Classes;
 
 
 namespace cocos2dSimpleGame
