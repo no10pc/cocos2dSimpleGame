@@ -447,19 +447,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="mainmenu.png">
+    <Compile Include="images\mainmenu.png">
       <Name>mainmenu</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="nextlevel.png">
+    <Compile Include="images\nextlevel.png">
       <Name>nextlevel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="reload.png">
+    <Compile Include="images\reload.png">
       <Name>reload</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
