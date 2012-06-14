@@ -62,7 +62,7 @@ namespace cocos2dSimpleGame.Classes
         }
         void playCallback(object sender)
         {
-            GamePlayScreen pScene = new GamePlayScreen();
+            GamePlayScene pScene = new GamePlayScene();
             CCDirector.sharedDirector().pushScene(pScene);
         }
         void aboutCallback(object sender)

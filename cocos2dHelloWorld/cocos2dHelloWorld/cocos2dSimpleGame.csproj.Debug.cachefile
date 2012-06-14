@@ -37,11 +37,6 @@ Content\cars\sonice_cars_14.xnb
 Content\cars\sonice_cars_15.xnb
 Content\images\Player2.xnb
 Content\images\Projectile2.xnb
-Content\fonts\Arial.xnb
-Content\fonts\StartFont.xnb
-Content\sounds\boom.xnb
-Content\sounds\biubiu.xnb
-Content\sounds\background.xnb
 Content\cars\Lights_01.xnb
 Content\cars\Lights_02.xnb
 Content\cars\Lights_03.xnb
@@ -58,6 +53,17 @@ Content\cars\Lights_13.xnb
 Content\cars\Lights_14.xnb
 Content\cars\Lights_15.xnb
 Content\cars\Lights_16.xnb
+Content\cars\Target.xnb
+Content\cars\Target2.xnb
+Content\fonts\Arial.xnb
+Content\fonts\StartFont.xnb
+Content\sounds\background.xnb
+Content\sounds\biubiu.xnb
+Content\sounds\explosion.xnb
+Content\sounds\boom.xnb
+Content\mainmenu.xnb
+Content\nextlevel.xnb
+Content\reload.xnb
 Content\sounds\background.wma
 Content\images\OpenXLive.jpg
 Content\images\Achievements.png
@@ -92,7 +98,6 @@ Content\cars\sonice_cars_12.png
 Content\cars\sonice_cars_13.png
 Content\cars\sonice_cars_14.png
 Content\cars\sonice_cars_15.png
-Content\sounds\boom.wav
 Content\sounds\background.mp3
 Content\images\Player2.png
 Content\images\Projectile2.png
@@ -112,4 +117,9 @@ Content\cars\Lights_13.png
 Content\cars\Lights_14.png
 Content\cars\Lights_15.png
 Content\cars\Lights_16.png
+Content\cars\Target.png
+Content\cars\Target2.png
+Content\mainmenu.png
+Content\nextlevel.png
+Content\reload.png
 messages.txt

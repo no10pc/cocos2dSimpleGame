@@ -6,31 +6,52 @@ using cocos2d;
 
 using CocosDenshion;
 using Microsoft.Xna.Framework;
+using Microsoft.Phone.Shell;
 
 namespace cocos2dSimpleGame.Classes
 {
-    public class GamePlayScreen : CCScene
+    public class GamePlayScene : CCScene
     {
-        public override void onEnter()
+        //public override void onEnter()
+        //{
+        //    base.onEnter();
+        //    CCLayerColor colorLayer = CCLayerColor.layerWithColor(new ccColor4B(255, 255, 255, 0));
+        //    this.addChild(colorLayer);
+        //    this.addChild(GamePlayLayer.node());
+        //}
+        public GamePlayScene()
         {
-            base.onEnter();
             CCLayerColor colorLayer = CCLayerColor.layerWithColor(
-                new ccColor4B(255, 255, 255, 0));
+                new ccColor4B(255, 255, 255, 255));
             this.addChild(colorLayer);
-            this.addChild(GamePlayLayer.node());
+            GamePlayLayer player = (GamePlayLayer)GamePlayLayer.node();
+            player.tag = 3;
+            this.addChild(player);
+            PhoneApplicationService.Current.State["PlayScene"] = this;
+
+
+
+
         }
+
+
     }
     class GamePlayLayer : CCLayer
     {
         List<CCSprite> _targets;
         List<CCSprite> _projectiles;
-        int projectileDescroyed = 0;
+        int projectilesDestroyed = 0;
         int quitProjectiles = 0;
         public int count = 0;
         public CCLabelTTF title;
 
         public CCSprite player;
         CCSprite target;
+
+        Level level = new Level(1);
+        int life = 40;
+        CCLabelTTF notic;
+
 
         public override bool init()
         {
@@ -58,6 +79,10 @@ namespace cocos2dSimpleGame.Classes
             title.position = new CCPoint(50, 24);
             this.addChild(title);
 
+            string msg = String.Format("Count:{0},life:{1},Level:{2}", projectilesDestroyed, life, level.level);
+            notic = CCLabelTTF.labelWithString(msg, "Arial", 24);
+            notic.position = new CCPoint(notic.contentSize.width / 2, screenHeight - notic.contentSize.height / 2);
+            addChild(notic);
 
 
             this.schedule(gameLogic, 1.0f);
@@ -90,15 +115,25 @@ namespace cocos2dSimpleGame.Classes
             Random random = new Random();
             var screenWidth = CCDirector.sharedDirector().getWinSize().width;
             var screenHeight = CCDirector.sharedDirector().getWinSize().height;
-            string number = random.Next(1, 15).ToString("00");
-            if (int.Parse(number) / 2 == Convert.ToDouble(number) / 2)
-            {
-                target = CCSprite.spriteWithFile(@"cars/sonice_cars_" + number);
-            }
-            else
-            {
-                target = CCSprite.spriteWithFile(@"cars/lights_" + number);
-            }
+            //string number = random.Next(1, 15).ToString("00");
+            //if (int.Parse(number) / 2 == Convert.ToDouble(number) / 2)
+            //{
+            //    target = CCSprite.spriteWithFile(@"cars/sonice_cars_" + number);
+            //}
+            //else
+            //{
+            //    target = CCSprite.spriteWithFile(@"cars/lights_" + number);
+            //}
+            Monster target = null;
+            //if (random.Next() % 2 == 0)
+            //{
+            //    target = WeakAndFastMonster.monster();
+            //}
+            //else
+            //{
+            //    target = StrongAndSlowMonster.monster();
+            //}
+            target = level.GetMonster();
 
             var minY = target.contentSize.height / 2;
             var maxY = screenHeight - target.contentSize.height / 2;
@@ -116,8 +151,10 @@ namespace cocos2dSimpleGame.Classes
 
 
             //Determine speed of the target  
-            float minDuration = 4.0f;
-            float maxDuration = 7.0f;
+            //float minDuration = 4.0f;
+            //float maxDuration = 7.0f;
+            float minDuration = target.minMoveDuration;
+            float maxDuration = target.maxMoveDuration;
             float rangeDuration = maxDuration - minDuration;
             float actualDuration = random.Next() % rangeDuration + minDuration;
 
@@ -141,6 +178,15 @@ namespace cocos2dSimpleGame.Classes
             if (sprite.tag == 1)
             {
                 _targets.Remove(sprite);
+                life--;
+                string msg = string.Format("Count:{0},life:{1},Level:{2}", projectilesDestroyed, life, level.level);
+                notic.setString(msg);
+                if (life <= 0)
+                {
+                    GameOverScene pScene = new GameOverScene("Game Over");
+                    CCDirector.sharedDirector().replaceScene(pScene);
+
+                }
             }
             else if (sprite.tag == 2)
             {
@@ -205,11 +251,13 @@ namespace cocos2dSimpleGame.Classes
             nextProjectile.runAction(CCSequence.actions(CCMoveTo.actionWithDuration(realMoveDuration, realDest),
                 CCCallFuncN.actionWithTarget(this, spriteMoveFinished)));
             nextProjectile.tag = 2;
+
         }
         void finishShoot()
         {
             this.addChild(nextProjectile);
             _projectiles.Add(nextProjectile);
+            SimpleAudioEngine.sharedEngine().playEffect(@"sounds/biubiu");
             nextProjectile = null;
         }
         public void updates(float dt)
@@ -225,6 +273,7 @@ namespace cocos2dSimpleGame.Classes
                     projectile.position.y - projectile.contentSize.height / 2,
                     projectile.contentSize.width,
                     projectile.contentSize.height);
+                bool monsterHit = false;
                 foreach (CCSprite target in _targets)
                 {
                     CCRect targetRect = new CCRect(
@@ -234,26 +283,38 @@ namespace cocos2dSimpleGame.Classes
                         target.contentSize.height);
                     if (CCRect.CCRectIntersetsRect(projectileRect, targetRect))
                     {
-                        SimpleAudioEngine.sharedEngine().playEffect(@"sounds/boom");
-                        targetToDelete.Add(target);
+                        monsterHit = true;
+                        Monster monster = (Monster)target;
+                        monster.hp--;
+                        if (monster.hp <= 0)
+                        {
+                            targetToDelete.Add(target);
+                        }
+                        break;
                     }
                 }
                 foreach (CCSprite target in targetToDelete)
                 {
                     _targets.Remove(target);
-                    projectileDescroyed++;
-                    title.setString(projectileDescroyed.ToString("0000"));
-                    if (projectileDescroyed > 10)
+
+                    projectilesDestroyed++;
+                    string msg = String.Format("Count:{0},life:{1},Level:{2}", projectilesDestroyed, life, level.level);
+                    notic.setString(msg);
+                    if (projectilesDestroyed >= level.levelCount)
                     {
-                        //GameOverScene pScene = new GameOverScene("You Win");
-                        //CCDirector.sharedDirector().replaceScene(pScene);
+                        GameOverScene pScene = new GameOverScene("You Win");
+                        CCDirector.sharedDirector().replaceScene(pScene);
                     }
                     this.removeChild(target, true);
                 }
-                if (targetToDelete.Count > 0)
+
+                if (monsterHit)
                 {
                     projectilesToDelete.Add(projectile);
+                    SimpleAudioEngine.sharedEngine().playEffect(@"sounds/explosion");
+
                 }
+
 
             }
             foreach (CCSprite projectile in projectilesToDelete)
@@ -268,6 +329,34 @@ namespace cocos2dSimpleGame.Classes
                 this.removeChild(projectile, true);
             }
             projectilesToDelete.Clear();
+        }
+
+        public void Reset(bool replay)
+        {
+            foreach (var item in _targets)
+            {
+                this.removeChild(item, true);
+            }
+            foreach (var item in _projectiles)
+            {
+                this.removeChild(item, true);
+            }
+            _targets.Clear();
+            _projectiles.Clear();
+            projectilesDestroyed = 0;
+            nextProjectile = null;
+            if (replay)
+            {
+                life = 40;
+            }
+            else
+            {
+                level.NextLevel();
+            }
+            this.schedule(gameLogic, 1.0f);
+            this.schedule(updates);
+            string msg = String.Format("Count:{0},life:{1},Level:{2}", projectilesDestroyed, life, level.level);
+            notic.setString(msg);
         }
     }
 }
