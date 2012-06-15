@@ -46,9 +46,12 @@ namespace cocos2dBOX2DDemo
             pDirector.animationInterval = 1.0 / 60;
 
             // create a scene. it's an autorelease object
-            CCScene pScene = cocos2dBOX2DDemoScene.scene();
+            //CCScene pScene = cocos2dBOX2DDemoScene.scene();
 
-            //run
+            ////run
+            //pDirector.runWithScene(pScene);
+            CCScene pScene = CCScene.node();
+            pScene.addChild(Classes.BOX2DLayer.node());
             pDirector.runWithScene(pScene);
 
             return true;

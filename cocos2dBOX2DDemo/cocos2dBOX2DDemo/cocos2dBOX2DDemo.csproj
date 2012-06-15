@@ -52,9 +52,11 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\cocos2dHelloWorld\cocos2dHelloWorld\bin\Windows Phone\Debug\cocos2d-xna.dll</HintPath>
-    </Reference>
+    <Reference Include="Box2D.XNA, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="cocos2d-xna, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="cocos2d.Content.Pipeline.Importers, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86" />
+    <Reference Include="cocos2d.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="CocosDenshion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
@@ -69,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AppDelegate.cs" />
+    <Compile Include="Classes\BOX2DLayer.cs" />
     <Compile Include="Classes\HelloWorldScene.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\AppManifest.xml">
@@ -82,6 +85,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
+    <Content Include="lib\Box2D.XNA.dll" />
+    <Content Include="lib\cocos2d-xna.dll" />
+    <Content Include="lib\cocos2d.Content.Pipeline.Importers.dll" />
+    <Content Include="lib\cocos2d.Framework.dll" />
+    <Content Include="lib\CocosDenshion.dll" />
     <Content Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
