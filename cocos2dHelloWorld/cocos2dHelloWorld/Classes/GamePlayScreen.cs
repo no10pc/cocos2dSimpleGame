@@ -21,20 +21,13 @@ namespace cocos2dSimpleGame.Classes
         //}
         public GamePlayScene()
         {
-            CCLayerColor colorLayer = CCLayerColor.layerWithColor(
-                new ccColor4B(255, 255, 255, 255));
+            CCLayerColor colorLayer = CCLayerColor.layerWithColor(new ccColor4B(255, 255, 255, 255));
             this.addChild(colorLayer);
             GamePlayLayer player = (GamePlayLayer)GamePlayLayer.node();
             player.tag = 3;
             this.addChild(player);
             PhoneApplicationService.Current.State["PlayScene"] = this;
-
-
-
-
         }
-
-
     }
     class GamePlayLayer : CCLayer
     {
@@ -183,7 +176,7 @@ namespace cocos2dSimpleGame.Classes
                 notic.setString(msg);
                 if (life <= 0)
                 {
-                    GameOverScene pScene = new GameOverScene("Game Over");
+                    GameOverScene pScene = new GameOverScene(false);
                     CCDirector.sharedDirector().replaceScene(pScene);
 
                 }
@@ -296,13 +289,12 @@ namespace cocos2dSimpleGame.Classes
                 foreach (CCSprite target in targetToDelete)
                 {
                     _targets.Remove(target);
-
                     projectilesDestroyed++;
                     string msg = String.Format("Count:{0},life:{1},Level:{2}", projectilesDestroyed, life, level.level);
                     notic.setString(msg);
                     if (projectilesDestroyed >= level.levelCount)
                     {
-                        GameOverScene pScene = new GameOverScene("You Win");
+                        GameOverScene pScene = new GameOverScene(true);
                         CCDirector.sharedDirector().replaceScene(pScene);
                     }
                     this.removeChild(target, true);
@@ -312,7 +304,6 @@ namespace cocos2dSimpleGame.Classes
                 {
                     projectilesToDelete.Add(projectile);
                     SimpleAudioEngine.sharedEngine().playEffect(@"sounds/explosion");
-
                 }
 
 

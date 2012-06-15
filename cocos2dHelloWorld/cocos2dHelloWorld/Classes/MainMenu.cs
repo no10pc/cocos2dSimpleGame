@@ -22,7 +22,9 @@ namespace cocos2dSimpleGame.Classes
             background.position = new CCPoint(width / 2, height / 2);
             this.addChild(background);
 
-
+            //var itemReplay = CCMenuItemImage.itemFromNormalImage(@"images/reload", @"images/reload", this, replay);
+            //var itemMainMenu = CCMenuItemImage.itemFromNormalImage(@"images/mainmenu", @"images/mainmenu", this, mainmenu);
+            //var itemNextLevel = CCMenuItemImage.itemFromNormalImage(@"images/nextlevel ", @"images/nextlevel", this, nextlevel);
 
             CCMenuItemImage playItem = CCMenuItemImage.itemFromNormalImage(@"images/home_64", @"images/home_64", this, playCallback);
 

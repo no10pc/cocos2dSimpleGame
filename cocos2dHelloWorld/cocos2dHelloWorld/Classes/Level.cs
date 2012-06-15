@@ -27,29 +27,17 @@ namespace cocos2dSimpleGame.Classes
             {
                 case 1:
                     return 10;
-
                 case 2:
                     return 10;
-
                 case 3:
-                    return 10;
-
-                case 4:
-                    return 10;
-
-                case 5:
-                    return 10;
-
-                case 6:
-                    return 10;
-
-                case 7:
-                    return 10;
-
+                    return 35;
+                case 4: return 50;
+                case 5: return 55;
+                case 6: return 60;
+                case 7: return 65;
                 default:
                     return 30;
-
-            }
+            }  
         }
         public void NextLevel()
         {
