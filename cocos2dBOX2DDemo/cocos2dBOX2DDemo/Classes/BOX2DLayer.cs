@@ -24,18 +24,6 @@ namespace cocos2dBOX2DDemo.Classes
             }
 
 
-            //CCSize winSize = CCDirector.sharedDirector().getWinSize();
-            //title = CCLabelTTF.labelWithString("FootBall", "Arial", 24);
-            //title.position = new CCPoint(winSize.width / 2, winSize.height  - 50);
-            //this.addChild(title,1);
-            //ball = CCSprite.spriteWithFile(@"images/ball");
-            //ball.position = new CCPoint(100, 300);
-            //ball.addChild(ball);
-            //Vector2 gravity = new Vector2(0.0f, -30f);
-            //bool doSleep = true;
-            //world = new World(gravity, doSleep);
-
-
             CCSize winSize = CCDirector.sharedDirector().getWinSize();
             title = CCLabelTTF.labelWithString("FootBall", "Arial", 24);
             title.position = new CCPoint(winSize.width / 2, winSize.height - 50);
@@ -46,12 +34,6 @@ namespace cocos2dBOX2DDemo.Classes
             Vector2 gravity = new Vector2(0.0f, -30.0f);
             bool doSleep = true;
             world = new World(gravity, doSleep);
-
-
-
-
-
-
             /////////////////////////
             BodyDef groundBodyDef = new BodyDef();
             groundBodyDef.position = new Vector2(0, 0);

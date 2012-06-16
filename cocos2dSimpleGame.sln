@@ -9,7 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontProcessor", "FontProces
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2dBOX2DDemo", "cocos2dBOX2DDemo\cocos2dBOX2DDemo\cocos2dBOX2DDemo.csproj", "{756CBEA3-CA2F-426E-A7B9-C06DD5F50002}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "cocos2dBOX2DDemoContent", "cocos2dBOX2DDemo\cocos2dBOX2DDemoContent\cocos2dBOX2DDemoContent.contentproj", "{01C7930D-BF17-4075-88DF-68B9F936986C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2dBOX2DDemoContent", "cocos2dBOX2DDemo\cocos2dBOX2DDemoContent\cocos2dBOX2DDemoContent.contentproj", "{01C7930D-BF17-4075-88DF-68B9F936986C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cocos2dBox2DBreakOutDemo", "cocos2dBox2DBreakOutDemo\cocos2dBox2DBreakOutDemo\cocos2dBox2DBreakOutDemo.csproj", "{426B0123-98B6-45F7-AF9E-B0E32AD5E206}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "cocos2dBox2DBreakOutDemoContent", "cocos2dBox2DBreakOutDemo\cocos2dBox2DBreakOutDemoContent\cocos2dBox2DBreakOutDemoContent.contentproj", "{09ECA3C2-C348-485D-9970-1B2E813A6BB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,26 @@ Global
 		{01C7930D-BF17-4075-88DF-68B9F936986C}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
 		{01C7930D-BF17-4075-88DF-68B9F936986C}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
 		{01C7930D-BF17-4075-88DF-68B9F936986C}.Release|x86.ActiveCfg = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Mixed Platforms.Deploy.0 = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|Windows Phone.Deploy.0 = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Debug|x86.ActiveCfg = Debug|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Mixed Platforms.Deploy.0 = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Windows Phone.Build.0 = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|Windows Phone.Deploy.0 = Release|Windows Phone
+		{426B0123-98B6-45F7-AF9E-B0E32AD5E206}.Release|x86.ActiveCfg = Release|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Debug|x86.ActiveCfg = Debug|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{09ECA3C2-C348-485D-9970-1B2E813A6BB5}.Release|x86.ActiveCfg = Release|Windows Phone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
