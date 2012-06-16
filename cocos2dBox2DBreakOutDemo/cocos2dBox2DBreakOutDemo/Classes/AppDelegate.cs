@@ -46,7 +46,7 @@ namespace cocos2dBox2DBreakOutDemo
             pDirector.animationInterval = 1.0 / 60;
 
             // create a scene. it's an autorelease object
-            CCScene pScene = cocos2dBox2DBreakOutDemoScene.scene();
+            Classes.BreakOutScene pScene = new Classes.BreakOutScene();
 
             //run
             pDirector.runWithScene(pScene);
